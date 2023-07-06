@@ -1,0 +1,111 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net462</TargetFramework>
+    <AssemblyName>HS_NoIntro</AssemblyName>
+    <Description>HS_NoIntro</Description>
+    <Version>0.1.0</Version>
+	<LangVersion>10</LangVersion>
+	<Nullable>enable</Nullable>
+	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ExportedAssets\**" />
+    <Compile Remove="ThunderStore Package\**" />
+    <Compile Remove="Thunderstore\**" />
+    <EmbeddedResource Remove="ExportedAssets\**" />
+    <EmbeddedResource Remove="ThunderStore Package\**" />
+    <EmbeddedResource Remove="Thunderstore\**" />
+    <None Remove="ExportedAssets\**" />
+    <None Remove="ThunderStore Package\**" />
+    <None Remove="Thunderstore\**" />
+  </ItemGroup>
+
+	<ItemGroup>
+    <PackageReference Include="BepInEx.Core" Version="5.*" />
+
+  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.1" PrivateAssets="all" />
+	</ItemGroup>
+  
+  <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
+  </ItemGroup>
+  
+  	<ItemGroup>
+		<Reference Include="BepInEx.Preloader">
+		  <HintPath>..\..\Valheim_Debug\BepInEx\core\BepInEx.Preloader.dll</HintPath>
+		</Reference>
+   </ItemGroup>
+  <ItemGroup>
+	  <Reference Include="0Harmony">
+	    <HintPath>Libs\BepInEx\0Harmony.dll</HintPath>
+	  </Reference>
+	  <Reference Include="assembly_googleanalytics" Publicize="true">
+	    <HintPath>Libs\Valheim\assembly_googleanalytics.dll</HintPath>
+	  </Reference>
+	  <Reference Include="assembly_guiutils" Publicize="true">
+	    <HintPath>Libs\Valheim\assembly_guiutils.dll</HintPath>
+	  </Reference>
+	  <Reference Include="assembly_lux" Publicize="true">
+	    <HintPath>Libs\Valheim\assembly_lux.dll</HintPath>
+	  </Reference>
+	  <Reference Include="assembly_postprocessing" Publicize="true">
+	    <HintPath>Libs\Valheim\assembly_postprocessing.dll</HintPath>
+	  </Reference>
+	  <Reference Include="assembly_simplemeshcombine" Publicize="true">
+	    <HintPath>Libs\Valheim\assembly_simplemeshcombine.dll</HintPath>
+	  </Reference>
+	  <Reference Include="assembly_steamworks" Publicize="true">
+	    <HintPath>Libs\Valheim\assembly_steamworks.dll</HintPath>
+	  </Reference>
+	  <Reference Include="assembly_sunshafts" Publicize="true">
+	    <HintPath>Libs\Valheim\assembly_sunshafts.dll</HintPath>
+	  </Reference>
+	  <Reference Include="assembly_utils" Publicize="true">
+	    <HintPath>Libs\Valheim\assembly_utils.dll</HintPath>
+	  </Reference>
+	  <Reference Include="assembly_valheim" Publicize="true">
+	    <HintPath>Libs\Valheim\assembly_valheim.dll</HintPath>
+	  </Reference>
+	  <Reference Include="BepInEx" Publicize="true">
+	    <HintPath>Libs\BepInEx\BepInEx.dll</HintPath>
+	  </Reference>
+	  <Reference Include="UnityEngine">
+	    <HintPath>Libs\unstripped_corlib\UnityEngine.dll</HintPath>
+	  </Reference>
+	  <Reference Include="UnityEngine.AssetBundleModule" Publicize="true">
+	    <HintPath>Libs\unstripped_corlib\UnityEngine.AssetBundleModule.dll</HintPath>
+	  </Reference>
+	  <Reference Include="UnityEngine.CoreModule">
+	    <HintPath>Libs\unstripped_corlib\UnityEngine.CoreModule.dll</HintPath>
+	  </Reference>
+	  <Reference Include="UnityEngine.SharedInternalsModule">
+	    <HintPath>Libs\unstripped_corlib\UnityEngine.SharedInternalsModule.dll</HintPath>
+	  </Reference>
+  </ItemGroup>
+  
+  <ItemGroup>
+	  <None Update="Libs\BepInEx\0Harmony.dll">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Libs\BepInEx\BepInEx.dll">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Libs\BepInEx\MonoMod.Utils.dll">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="ServerSync.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="xcopy &quot;$(TargetPath)&quot; &quot;D:\Valheim_Dev\Valheim_Debug\BepInEx\patchers\HS_NoIntro&quot; /Y " />
+		<Exec Condition="'$(Configuration)' != 'Release'" Command="xcopy &quot;$(TargetDir)$(TargetName).pdb&quot; &quot;D:\Valheim_Dev\Valheim_Debug\BepInEx\patchers\HS_NoIntro&quot; /Y " />
+	</Target>
+
+</Project>

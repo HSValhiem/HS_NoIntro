@@ -1,0 +1,9 @@
+{
+    "name": "HS_NoIntro",
+    "version_number": "0.1.0",
+    "website_url": "https://github.com/HSValhiem/HS_NoIntro",
+    "description": "Remove those Pesky Startup Videos and Recoup the 4 Seconds of Waisted Time!",
+    "dependencies": [
+        "denikson-BepInExPack_Valheim-5.4.2105"
+    ]
+}
