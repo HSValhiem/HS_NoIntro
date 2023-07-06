@@ -1,11 +1,9 @@
 # HS No Intro
-Join the swift revolution with "HS No Intro"!
+Join the revolution of lightning-fast adventuring with "HS No Intro"!
 
-From the talented team at HS, this game-changing mod turbocharges your Valheim experience, propelling you to the start screen a blazing 4 seconds faster than ever before!
+Crafted by the talented team at HS, this game-changing mod propels you to the start screen a blazing 4 seconds faster than ever before.
 
-Say farewell to the lingering intro screens and embrace the lightning-fast path to Valheim's captivating realms.
-
-With "HS No Intro," you'll sprint past those time-consuming intros with unrivaled speed, unlocking the true essence of Viking adventure in an instant.
+Wave goodbye to those sluggish intro screens and embrace the warp-speed path to Valheim's captivating realms.
 
 ## Beta Version Notice:
 Please note that the current version of this mod, **No Intro**, is in beta stage. While we have thoroughly tested its functionality, there might still be some unforeseen issues or bugs.
@@ -26,5 +24,5 @@ Thanks to Blaxxun for the Patch used in ConfigWatcher to Hook Chainloader Finish
 
 ## Installation (Manual)
 1. Install the [BepInExPack Valheim](https://valheim.thunderstore.io/package/denikson/BepInExPack_Valheim/) mod.
-2. Extract the mod's folder, `"HS_NoIntro"`, into the following folder: `<Steam Location>\steamapps\common\Valheim\BepInEx\patchers`
+2. Extract the mod's DLL file, `"HS_NoIntro.dll"`, into the following folder: `<Steam Location>\steamapps\common\Valheim\BepInEx\patchers\HS-NoIntro`
 3. Launch the game.

@@ -104,8 +104,8 @@
 
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="xcopy &quot;$(TargetPath)&quot; &quot;D:\Valheim_Dev\Valheim_Debug\BepInEx\patchers\HS_NoIntro&quot; /Y " />
-		<Exec Condition="'$(Configuration)' != 'Release'" Command="xcopy &quot;$(TargetDir)$(TargetName).pdb&quot; &quot;D:\Valheim_Dev\Valheim_Debug\BepInEx\patchers\HS_NoIntro&quot; /Y " />
+		<Exec Command="xcopy &quot;$(TargetPath)&quot; &quot;D:\Valheim_Dev\Valheim_Debug\BepInEx\patchers\HS-NoIntro&quot; /Y " />
+		<Exec Condition="'$(Configuration)' != 'Release'" Command="xcopy &quot;$(TargetDir)$(TargetName).pdb&quot; &quot;D:\Valheim_Dev\Valheim_Debug\BepInEx\patchers\HS-NoIntro&quot; /Y " />
 	</Target>
 
 </Project>

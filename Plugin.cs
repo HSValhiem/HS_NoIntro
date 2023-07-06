@@ -26,7 +26,7 @@ public static class HS_NoIntro
     public static ManualLogSource? HS_Logger = Logger.CreateLogSource("HS_NoIntro");
 
     public static string FilePath = Path.Combine(Paths.GameRootPath, Paths.ProcessName + "_Data", "globalgamemanagers");
-    public static string BackupPath = Path.Combine(Paths.PatcherPluginPath, "HS_NoIntro", "globalgamemanagers.bak");
+    public static string BackupPath = Path.Combine(Paths.PatcherPluginPath, "HS-NoIntro");
 
 
     public static void Patch()
@@ -43,16 +43,23 @@ public static class HS_NoIntro
 
     public static void Backup()
     {
-        if (!File.Exists(BackupPath))
+        string backupFilePath = Path.Combine(BackupPath, "globalgamemanagers.bak");
+        if (!File.Exists(backupFilePath))
         {
             // Backup does not Exist, so Backup the file before patching
             HS_Logger?.LogInfo($"Init Backup of Default Intro Configuration File: {FilePath}");
-            File.Copy(FilePath, BackupPath, true);
+            File.Copy(FilePath, backupFilePath, true);
         }
     }
 
     public static void Initialize()
     {
+        if (!Directory.Exists(BackupPath))
+        {
+            HS_Logger?.LogError("HS No Intro is installed in the wrong location.  Please Read the Install Instructions.");
+            return;
+        }
+
         Assembly assembly = Assembly.GetExecutingAssembly();
         Harmony harmony = new("hs.nointro");
         harmony.PatchAll(assembly);
@@ -97,7 +104,7 @@ public static class HS_NoIntro
         private static void PostChainloader()
         {
             // Use File Copy instead of Changing the Bit Back to prevent changing the modified date
-            File.Copy(BackupPath, FilePath, true);
+            File.Copy(Path.Combine(BackupPath, "globalgamemanagers.bak"), FilePath, true);
         }
     }
 }
